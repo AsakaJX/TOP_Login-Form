@@ -9,6 +9,24 @@
 :root {
   --bg: whitesmoke;
   --bg-left: oklch(25.197% 0.00003 271.152);
+  --shadow: rgba(233, 233, 233);
+  /* --shadow-dark: rgb(187, 187, 187); */
+  --shadow-dark: #162127bb;
+
+  --border: #3837353d;
+  --select: #383735;
+  --error: #ff8181;
+  --valid: #577b57;
+
+  --button: #557754;
+
+  --text: whitesmoke;
+
+  font-size: 16px;
+
+  font-family: 'Zain', sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
@@ -30,10 +48,155 @@ main {
   width: 35%;
   height: 100vh;
   background-color: var(--bg-left);
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-side::before {
+  content: '';
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background-image: url(/assets/wallpaper.jpg);
+  background-repeat: no-repeat;
+  background-position: calc(50% - 16%);
+  background-size: cover;
+  opacity: 0.1;
+}
+
+h1 {
+  width: 50%;
+
+  color: var(--text);
+  font-size: 2.5rem;
+  line-height: 2rem;
 }
 
 .right-side {
   width: 65%;
   height: 100vh;
   background-color: white;
+
+  display: flex;
+  gap: 1em;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding: 2em;
+}
+
+.right-side h2 {
+  font-size: 2rem;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2.5em;
+
+  width: 85%;
+  height: fit-content;
+  padding: 3em;
+  border-radius: 0.5em;
+
+  box-shadow: 0px 0px 15px 1px var(--shadow);
+}
+
+fieldset {
+  border: 0;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  gap: 2em;
+}
+
+.field-container {
+  width: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+label {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+input {
+  width: 75%;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='tel'] {
+  font-size: 1.1rem;
+
+  border: 1px solid var(--border);
+  border-radius: 0.2em;
+
+  border-bottom: 3px solid var(--border);
+
+  padding: 0.5em 0.2em;
+}
+
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='email']:focus,
+input[type='tel']:focus {
+  outline: none;
+  border-bottom-color: var(--select);
+}
+
+input[type='text']:focus::placeholder,
+input[type='password']:focus::placeholder,
+input[type='email']:focus::placeholder,
+input[type='tel']:focus::placeholder {
+  color: transparent;
+}
+
+input[type='text']:user-invalid,
+input[type='password']:user-invalid,
+input[type='email']:user-invalid,
+input[type='tel']:user-invalid {
+  border-bottom-color: var(--error);
+}
+
+input[type='text']:focus:invalid:not(:placeholder-shown),
+input[type='password']:focus:invalid:not(:placeholder-shown),
+input[type='email']:focus:invalid:not(:placeholder-shown),
+input[type='tel']:focus:invalid:not(:placeholder-shown) {
+  border-bottom-color: var(--error);
+}
+
+input[type='text']:valid:not(:placeholder-shown),
+input[type='password']:valid:not(:placeholder-shown),
+input[type='email']:valid:not(:placeholder-shown),
+input[type='tel']:valid:not(:placeholder-shown) {
+  border-bottom-color: var(--valid);
+}
+
+button {
+  appearance: none;
+
+  font-size: 1.5rem;
+  letter-spacing: 0.12em;
+  padding: 0.3em 3em;
+  background-color: var(--button);
+  color: var(--bg);
+  border: 0;
+  border-radius: 0.5em;
+
+  box-shadow: 0px 0px 12px 0px var(--shadow-dark);
+}
+
+p {
+  font-size: 1.1rem;
 }
